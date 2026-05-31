@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SunRisers Hyderabad | Feel the Heat Fear the Fire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --orange: #F05A00;
+    --orange-light: #FF7722;
+    --orange-glow: #FF6600;
+    --dark: #0A0A0A;
+    --dark2: #111111;
+    --dark3: #1A1A1A;
+    --dark4: #222222;
+    --gray: #888888;
+    --light: #F5F3EE;
+    --white: #FFFFFF;
+    --gold: #D4A017;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--dark);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+    height: 72px;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(240,90,0,0.2);
+    transition: all 0.3s;
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px; text-decoration: none;
+  }
+
+  .nav-logo-icon {
+    width: 44px; height: 44px;
+    background: var(--orange);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px; color: white; letter-spacing: 1px; flex-shrink: 0;
+  }
+
+  .nav-logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px; letter-spacing: 3px; color: var(--white); line-height: 1;
+  }
+  .nav-logo-text span { color: var(--orange); }
+
+  .nav-links {
+    display: flex; align-items: center; gap: 32px; list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: rgba(255,255,255,0.7);
+    text-decoration: none; transition: color 0.2s; position: relative;
+  }
+
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 2px; background: var(--orange);
+    transform: scaleX(0); transition: transform 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .nav-cta {
+    background: var(--orange); color: white !important;
+    padding: 8px 20px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .nav-cta:hover { background: var(--orange-light); transform: translateY(-1px); }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative; height: 100vh; min-height: 700px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; overflow: hidden; background: var(--dark);
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(240,90,0,0.18) 0%, transparent 65%),
+      linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0.6) 50%, rgba(10,10,10,1) 100%);
+    z-index: 1;
+  }
+
+  .hero-fire-lines {
+    position: absolute; inset: 0; z-index: 0; overflow: hidden;
+  }
+
+  .fire-line {
+    position: absolute; bottom: 0; width: 1px;
+    background: linear-gradient(to top, var(--orange), transparent);
+    animation: riseUp 3s ease-in infinite; opacity: 0;
+  }
+
+  @keyframes riseUp {
+    0%   { height: 0; opacity: 0; bottom: 0; }
+    20%  { opacity: 0.8; }
+    100% { height: 60vh; opacity: 0; bottom: 60vh; }
+  }
+
+  .hero-badge {
+    position: relative; z-index: 2;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 5px;
+    text-transform: uppercase; color: var(--orange);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-badge::before, .hero-badge::after {
+    content: ''; width: 40px; height: 1px; background: var(--orange);
+  }
+
+  .hero-title {
+    position: relative; z-index: 2;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 10vw, 130px);
+    line-height: 0.9; letter-spacing: 4px; color: var(--white); margin-bottom: 24px;
+  }
+  .hero-title span { color: var(--orange); display: block; }
+
+  .hero-tagline {
+    position: relative; z-index: 2;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px; font-weight: 400; letter-spacing: 6px;
+    text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 48px;
+  }
+
+  .hero-ctas {
+    position: relative; z-index: 2; display: flex; gap: 16px; align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--orange); color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; text-decoration: none;
+    padding: 14px 36px; display: inline-block;
+    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); }
+
+  .btn-secondary {
+    background: transparent; color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; text-decoration: none;
+    padding: 13px 36px; display: inline-block;
+    border: 1px solid rgba(255,255,255,0.3);
+    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--orange); background: rgba(240,90,0,0.1); }
+
+  .hero-scroll {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: rgba(255,255,255,0.4); cursor: pointer;
+    animation: bounce 2s ease infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(6px); }
+  }
+  .hero-scroll svg { opacity: 0.4; }
+
+  /* ===== TICKER ===== */
+  .ticker {
+    background: var(--orange); overflow: hidden;
+    height: 40px; display: flex; align-items: center;
+  }
+  .ticker-inner {
+    display: flex; gap: 60px;
+    animation: ticker 30s linear infinite; white-space: nowrap;
+  }
+  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  .ticker-item {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: white;
+    display: flex; align-items: center; gap: 16px; flex-shrink: 0;
+  }
+  .ticker-sep { opacity: 0.4; font-size: 18px; }
+
+  /* ===== SECTION STYLES ===== */
+  section { padding: 100px 60px; }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: 5px;
+    text-transform: uppercase; color: var(--orange);
+    margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::before { content: ''; width: 32px; height: 2px; background: var(--orange); }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 6vw, 80px);
+    line-height: 0.95; letter-spacing: 2px; color: var(--white); margin-bottom: 48px;
+  }
+
+  /* ===== MATCHES ===== */
+  .matches-section { background: var(--dark2); }
+
+  .matches-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1px; background: rgba(240,90,0,0.15);
+    border: 1px solid rgba(240,90,0,0.15);
+  }
+
+  .match-card {
+    background: var(--dark3); padding: 32px 28px;
+    position: relative; overflow: hidden; transition: background 0.2s;
+  }
+  .match-card:hover { background: var(--dark4); }
+  .match-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: var(--orange);
+  }
+
+  .match-meta {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 20px;
+  }
+
+  .match-teams {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-bottom: 20px;
+  }
+
+  .match-team {
+    display: flex; flex-direction: column; align-items: center; gap: 8px; flex: 1;
+  }
+
+  .team-badge {
+    width: 56px; height: 56px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 1px;
+  }
+  .team-srh { background: var(--orange); color: white; }
+  .team-rcb { background: #CC0000; color: white; }
+  .team-mi  { background: #004BA0; color: white; }
+  .team-csk { background: #F9CD05; color: #1A1A00; }
+  .team-kkr { background: #3B1F8C; color: white; }
+
+  .team-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: rgba(255,255,255,0.7); text-align: center;
+  }
+
+  .match-vs {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; color: rgba(255,255,255,0.15); letter-spacing: 3px;
+  }
+
+  .match-score {
+    display: flex; align-items: center; gap: 8px; justify-content: space-between;
+  }
+
+  .score-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; letter-spacing: 2px; color: var(--white); flex: 1; text-align: center;
+  }
+
+  .match-result {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.4); text-align: center;
+    margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .result-win      { color: #4CAF50; }
+  .result-loss     { color: #f44336; }
+  .result-upcoming { color: var(--orange); }
+
+  /* ===== SQUAD ===== */
+  .squad-section { background: var(--dark); }
+
+  .squad-filters {
+    margin-bottom: 48px;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: inline-flex; overflow: hidden;
+  }
+
+  .filter-btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    padding: 10px 24px; background: transparent; color: rgba(255,255,255,0.5);
+    border: none; cursor: pointer; transition: all 0.2s;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .filter-btn:last-child { border-right: none; }
+  .filter-btn:hover  { background: rgba(240,90,0,0.1); color: white; }
+  .filter-btn.active { background: var(--orange); color: white; }
+
+  .squad-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1px; background: rgba(255,255,255,0.04);
+  }
+
+  .player-card {
+    background: var(--dark2); position: relative; overflow: hidden;
+    cursor: pointer; transition: background 0.2s;
+    aspect-ratio: 3/4; display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .player-card:hover { background: var(--dark3); }
+
+  .player-bg {
+    position: absolute; inset: 0;
+    display: flex; align-items: flex-start; justify-content: center;
+    padding-top: 20px; overflow: hidden;
+  }
+
+  .player-silhouette {
+    width: 130px; height: 160px;
+    background: rgba(240,90,0,0.08);
+    border-radius: 50% 50% 20% 20%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px; color: rgba(240,90,0,0.2); letter-spacing: 1px;
+  }
+
+  .player-num {
+    position: absolute; top: 16px; right: 16px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px; line-height: 1; color: rgba(255,255,255,0.05); letter-spacing: 2px; z-index: 0;
+  }
+
+  .player-info {
+    position: relative; z-index: 2; padding: 20px;
+    background: linear-gradient(to top, rgba(10,10,10,0.98) 0%, rgba(10,10,10,0.8) 60%, transparent 100%);
+  }
+
+  .player-role {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 4px;
+  }
+
+  .player-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; line-height: 0.95; letter-spacing: 2px; color: var(--white); margin-bottom: 8px;
+  }
+  .player-name span { display: block; font-size: 22px; color: rgba(255,255,255,0.5); }
+
+  .player-country {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 1px;
+    display: flex; align-items: center; gap: 4px;
+  }
+
+  .intl-badge {
+    background: var(--orange); color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; padding: 2px 6px; margin-left: 6px;
+  }
+
+  .player-hover {
+    position: absolute; inset: 0;
+    background: rgba(240,90,0,0.04);
+    opacity: 0; transition: opacity 0.2s; z-index: 1;
+  }
+  .player-card:hover .player-hover { opacity: 1; }
+
+  /* ===== STATS ===== */
+  .stats-section { background: var(--orange); padding: 80px 60px; }
+
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0; border-left: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .stat-item {
+    padding: 40px 48px;
+    border-right: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .stat-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px; line-height: 1; letter-spacing: 2px; color: white; margin-bottom: 8px;
+  }
+  .stat-number span { font-size: 48px; opacity: 0.6; }
+
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 4px;
+    text-transform: uppercase; color: rgba(255,255,255,0.65);
+  }
+
+  /* ===== NEWS ===== */
+  .news-section { background: var(--dark2); }
+
+  .news-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+    gap: 1px; background: rgba(255,255,255,0.04);
+  }
+
+  .news-card {
+    background: var(--dark3); overflow: hidden;
+    cursor: pointer; transition: background 0.2s; position: relative;
+  }
+  .news-card:hover { background: var(--dark4); }
+
+  .news-thumb {
+    height: 220px;
+    background: linear-gradient(135deg, rgba(240,90,0,0.25) 0%, rgba(26,26,26,1) 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .news-card:first-child .news-thumb { height: 300px; }
+
+  .news-thumb-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px; color: rgba(240,90,0,0.12); letter-spacing: 4px;
+    position: absolute; z-index: 0;
+  }
+
+  .news-tag {
+    position: absolute; top: 16px; left: 16px; z-index: 1;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    background: var(--orange); color: white; padding: 4px 10px;
+  }
+
+  .news-body { padding: 24px 24px 28px; }
+
+  .news-date {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 10px;
+  }
+
+  .news-headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px; font-weight: 700; line-height: 1.2;
+    letter-spacing: 0.5px; color: var(--white); margin-bottom: 12px;
+  }
+  .news-card:first-child .news-headline { font-size: 26px; }
+
+  .news-excerpt { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+  .news-arrow {
+    position: absolute; bottom: 20px; right: 20px;
+    width: 32px; height: 32px;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .news-card:hover .news-arrow { background: var(--orange); border-color: var(--orange); }
+  .news-arrow svg { width: 14px; height: 14px; fill: none; stroke: white; stroke-width: 2; }
+
+  /* ===== SPONSORS ===== */
+  .sponsors-section {
+    background: var(--dark); padding: 60px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .sponsors-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: rgba(255,255,255,0.25); text-align: center; margin-bottom: 36px;
+  }
+
+  .sponsors-row {
+    display: flex; align-items: center; justify-content: center;
+    gap: 64px; flex-wrap: wrap;
+  }
+
+  .sponsor-item {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px; font-weight: 700; letter-spacing: 3px;
+    color: rgba(255,255,255,0.18); text-transform: uppercase;
+    transition: color 0.2s; cursor: pointer;
+  }
+  .sponsor-item:hover { color: rgba(255,255,255,0.5); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #050505; padding: 64px 60px 32px;
+    border-top: 1px solid rgba(240,90,0,0.3);
+  }
+
+  .footer-top {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px; margin-bottom: 60px;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px; letter-spacing: 4px; color: white; margin-bottom: 4px;
+  }
+  .footer-logo span { color: var(--orange); }
+
+  .footer-tagline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: rgba(255,255,255,0.25); margin-bottom: 24px;
+  }
+
+  .footer-socials { display: flex; gap: 12px; }
+
+  .social-btn {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(255,255,255,0.12);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: background 0.2s, border-color 0.2s;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: 1px; color: rgba(255,255,255,0.4);
+  }
+  .social-btn:hover { background: var(--orange); border-color: var(--orange); color: white; }
+
+  .footer-col-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 24px;
+    padding-bottom: 12px; border-bottom: 1px solid rgba(240,90,0,0.2);
+  }
+
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+
+  .footer-links a {
+    font-family: 'Barlow', sans-serif; font-size: 14px;
+    color: rgba(255,255,255,0.35); text-decoration: none;
+    transition: color 0.2s; letter-spacing: 0.5px;
+  }
+  .footer-links a:hover { color: var(--orange); }
+
+  .footer-bottom {
+    padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .footer-copy {
+    font-family: 'Barlow', sans-serif; font-size: 12px;
+    color: rgba(255,255,255,0.2); letter-spacing: 0.5px;
+  }
+
+  .footer-legal { display: flex; gap: 24px; }
+
+  .footer-legal a {
+    font-family: 'Barlow', sans-serif; font-size: 12px;
+    color: rgba(255,255,255,0.2); text-decoration: none; transition: color 0.2s;
+  }
+  .footer-legal a:hover { color: var(--orange); }
+
+  /* ===== QUOTE ===== */
+  .quote-section {
+    background: var(--dark3); padding: 100px 60px;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .quote-section::before {
+    content: '"'; position: absolute; top: -40px; left: 50%; transform: translateX(-50%);
+    font-family: 'Bebas Neue', sans-serif; font-size: 300px;
+    color: rgba(240,90,0,0.04); line-height: 1; pointer-events: none;
+  }
+
+  .quote-text {
+    position: relative; z-index: 1;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 5vw, 64px); line-height: 1.1; letter-spacing: 3px; color: var(--white);
+    max-width: 900px; margin: 0 auto 24px;
+  }
+  .quote-text em { color: var(--orange); font-style: normal; }
+
+  .quote-author {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
+    color: rgba(255,255,255,0.3); position: relative; z-index: 1;
+  }
+
+  .view-all {
+    display: inline-flex; align-items: center; gap: 10px; margin-top: 40px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--orange); text-decoration: none; cursor: pointer; transition: gap 0.2s;
+  }
+  .view-all:hover { gap: 16px; }
+  .view-all svg { width: 16px; height: 16px; fill: none; stroke: var(--orange); stroke-width: 2; }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    nav .nav-links { display: none; }
+    section { padding: 72px 24px; }
+    .stats-grid { grid-template-columns: repeat(2,1fr); }
+    .news-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .sponsors-section { padding: 48px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">SRH</div>
+    <div class="nav-logo-text">Sun<span>Risers</span><br>Hyderabad</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#matches">Matches</a></li>
+    <li><a href="#squad">Squad</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#" class="nav-cta">Fan Zone</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-fire-lines" id="fireLines"></div>
+  <div class="hero-bg"></div>
+  <div class="hero-badge">IPL 2026 Season</div>
+  <h1 class="hero-title">
+    Feel the Heat,
+    <span>Fear the Fire</span>
+  </h1>
+  <p class="hero-tagline">Sunrisers Hyderabad &mdash; Est. 2013 &mdash; Champions 2016</p>
+  <div class="hero-ctas">
+    <a href="#matches" class="btn-primary">View Fixtures</a>
+    <a href="#squad" class="btn-secondary">Meet the Squad</a>
+  </div>
+  <div class="hero-scroll" onclick="document.querySelector('.ticker').scrollIntoView({behavior:'smooth'})">
+    <svg width="16" height="24" viewBox="0 0 16 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M8 0v20M2 14l6 8 6-8"/>
+    </svg>
+    Scroll Down
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">SRH vs RCB &mdash; 6 June 2026 &mdash; Rajiv Gandhi Stadium <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Abhishek Sharma &mdash; 1823 IPL Runs <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Travis Head &mdash; 169.39 Strike Rate <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Heinrich Klaasen &mdash; 105* Best Score <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Pat Cummins &mdash; Captain &mdash; Coach: Daniel Vettori <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">SRH vs RCB &mdash; 6 June 2026 &mdash; Rajiv Gandhi Stadium <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Abhishek Sharma &mdash; 1823 IPL Runs <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Travis Head &mdash; 169.39 Strike Rate <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Heinrich Klaasen &mdash; 105* Best Score <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Pat Cummins &mdash; Captain &mdash; Coach: Daniel Vettori <span class="ticker-sep">◆</span></span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-number">287<span>/3</span></div>
+      <div class="stat-label">Highest Team Total (IPL Record)</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">13<span>+</span></div>
+      <div class="stat-label">Seasons of IPL Cricket</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">01</div>
+      <div class="stat-label">IPL Championship Title (2016)</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">55<span>K</span></div>
+      <div class="stat-label">Rajiv Gandhi Stadium Capacity</div>
+    </div>
+  </div>
+</div>
+
+<!-- MATCHES -->
+<section class="matches-section" id="matches">
+  <div class="section-label">IPL 2026 Fixtures</div>
+  <h2 class="section-title">Recent &amp;<br>Upcoming Matches</h2>
+  <div class="matches-grid">
+    <div class="match-card">
+      <div class="match-meta">May 27, 2026 &mdash; Rajiv Gandhi Stadium</div>
+      <div class="match-teams">
+        <div class="match-team"><div class="team-badge team-srh">SRH</div><div class="team-name">Sunrisers<br>Hyderabad</div></div>
+        <div class="match-vs">VS</div>
+        <div class="match-team"><div class="team-badge team-kkr">KKR</div><div class="team-name">Kolkata<br>Knight Riders</div></div>
+      </div>
+      <div class="match-score">
+        <div class="score-val">243/8</div>
+        <div class="score-val" style="color:rgba(255,255,255,0.3)">—</div>
+        <div class="score-val">248/4</div>
+      </div>
+      <div class="match-result result-loss">Lost by 6 wickets</div>
+    </div>
+    <div class="match-card">
+      <div class="match-meta">May 23, 2026 &mdash; Wankhede Stadium</div>
+      <div class="match-teams">
+        <div class="match-team"><div class="team-badge team-mi">MI</div><div class="team-name">Mumbai<br>Indians</div></div>
+        <div class="match-vs">VS</div>
+        <div class="match-team"><div class="team-badge team-srh">SRH</div><div class="team-name">Sunrisers<br>Hyderabad</div></div>
+      </div>
+      <div class="match-score">
+        <div class="score-val">198/7</div>
+        <div class="score-val" style="color:rgba(255,255,255,0.3)">—</div>
+        <div class="score-val">201/5</div>
+      </div>
+      <div class="match-result result-win">Won by 5 wickets</div>
+    </div>
+    <div class="match-card">
+      <div class="match-meta">Jun 6, 2026 &mdash; Rajiv Gandhi Stadium</div>
+      <div class="match-teams">
+        <div class="match-team"><div class="team-badge team-srh">SRH</div><div class="team-name">Sunrisers<br>Hyderabad</div></div>
+        <div class="match-vs">VS</div>
+        <div class="match-team"><div class="team-badge team-rcb">RCB</div><div class="team-name">Royal Challengers<br>Bengaluru</div></div>
+      </div>
+      <div class="match-score">
+        <div class="score-val" style="color:rgba(255,255,255,0.3)">TBD</div>
+        <div class="score-val" style="color:rgba(255,255,255,0.3)">—</div>
+        <div class="score-val" style="color:rgba(255,255,255,0.3)">TBD</div>
+      </div>
+      <div class="match-result result-upcoming">7:30 PM IST &mdash; Upcoming</div>
+    </div>
+    <div class="match-card">
+      <div class="match-meta">Jun 10, 2026 &mdash; MA Chidambaram</div>
+      <div class="match-teams">
+        <div class="match-team"><div class="team-badge team-csk">CSK</div><div class="team-name">Chennai<br>Super Kings</div></div>
+        <div class="match-vs">VS</div>
+        <div class="match-team"><div class="team-badge team-srh">SRH</div><div class="team-name">Sunrisers<br>Hyderabad</div></div>
+      </div>
+      <div class="match-score">
+        <div class="score-val" style="color:rgba(255,255,255,0.3)">TBD</div>
+        <div class="score-val" style="color:rgba(255,255,255,0.3)">—</div>
+        <div class="score-val" style="color:rgba(255,255,255,0.3)">TBD</div>
+      </div>
+      <div class="match-result result-upcoming">7:30 PM IST &mdash; Upcoming</div>
+    </div>
+  </div>
+  <a class="view-all" href="#">Full Schedule <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</section>
+
+<!-- SQUAD -->
+<section class="squad-section" id="squad">
+  <div class="section-label">IPL 2026 Roster</div>
+  <h2 class="section-title">The<br>Playing XI</h2>
+  <div class="squad-filters">
+    <button class="filter-btn active" onclick="filterSquad(this,'all')">All</button>
+    <button class="filter-btn" onclick="filterSquad(this,'batter')">Batters</button>
+    <button class="filter-btn" onclick="filterSquad(this,'allrounder')">All-Rounders</button>
+    <button class="filter-btn" onclick="filterSquad(this,'bowler')">Bowlers</button>
+    <button class="filter-btn" onclick="filterSquad(this,'keeper')">Keepers</button>
+  </div>
+  <div class="squad-grid" id="squadGrid">
+    <div class="player-card" data-role="keeper">
+      <div class="player-num">23</div>
+      <div class="player-bg"><div class="player-silhouette">IK</div></div>
+      <div class="player-hover"></div>
+      <div class="player-info">
+        <div class="player-role">Wicketkeeper Batter</div>
+        <div class="player-name">Ishan<span>Kishan</span></div>
+        <div class="player-country">🇮🇳 India &nbsp;|&nbsp; Stand-in Captain</div>
+      </div>
+    </div>
+    <div class="player-card" data-role="batter">
+      <div class="player-num">62</div>
+      <div class="player-bg"><div class="player-silhouette">TH</div></div>
+      <div class="player-hover"></div>
+      <div class="player-info">
+        <div class="player-role">Batter</div>
+        <div class="player-name">Travis<span>Head</span></div>
+        <div class="player-country">🇦🇺 Australia <span class="intl-badge">INTL</span></div>
+      </div>
+    </div>
+    <div class="player-card" data-role="allrounder">
+      <div class="player-num">04</div>
+      <div class="player-bg"><div class="player-silhouette">AS</div></div>
+      <div class="player-hover"></div>
+      <div class="player-info">
+        <div class="player-role">All-Rounder</div>
+        <div class="player-name">Abhishek<span>Sharma</span></div>
+        <div class="player-country">🇮🇳 India &nbsp;|&nbsp; Vice Captain</div>
+      </div>
+    </div>
+    <div class="player-card" data-role="keeper">
+      <div class="player-num">45</div>
+      <div class="player-bg"><div class="player-silhouette">HK</div></div>
+      <div class="player-hover"></div>
+      <div class="player-info">
+        <div class="player-role">Wicketkeeper Batter</div>
+        <div class="player-name">Heinrich<span>Klaasen</span></div>
+        <div class="player-country">🇿🇦 South Africa <span class="intl-badge">INTL</span></div>
+      </div>
+    </div>
+    <div class="player-card" data-role="allrounder">
+      <div class="player-num">29</div>
+      <div class="player-bg"><div class="player-silhouette">NKR</div></div>
+      <div class="player-hover"></div>
+      <div class="player-info">
+        <div class="player-role">All-Rounder</div>
+        <div class="player-name">Nitish<span>K. Reddy</span></div>
+        <div class="player-country">🇮🇳 India</div>
+      </div>
+    </div>
+    <div class="player-card" data-role="bowler">
+      <div class="player-num">30</div>
+      <div class="player-bg"><div class="player-silhouette">PC</div></div>
+      <div class="player-hover"></div>
+      <div class="player-info">
+        <div class="player-role">Bowler (Captain)</div>
+        <div class="player-name">Pat<span>Cummins</span></div>
+        <div class="player-country">🇦🇺 Australia <span class="intl-badge">INTL</span></div>
+      </div>
+    </div>
+    <div class="player-card" data-role="bowler">
+      <div class="player-num">14</div>
+      <div class="player-bg"><div class="player-silhouette">BK</div></div>
+      <div class="player-hover"></div>
+      <div class="player-info">
+        <div class="player-role">Bowler</div>
+        <div class="player-name">Bhuvneshwar<span>Kumar</span></div>
+        <div class="player-country">🇮🇳 India</div>
+      </div>
+    </div>
+    <div class="player-card" data-role="bowler">
+      <div class="player-num">07</div>
+      <div class="player-bg"><div class="player-silhouette">JU</div></div>
+      <div class="player-hover"></div>
+      <div class="player-info">
+        <div class="player-role">Bowler</div>
+        <div class="player-name">Jaydev<span>Unadkat</span></div>
+        <div class="player-country">🇮🇳 India</div>
+      </div>
+    </div>
+  </div>
+  <a class="view-all" href="#">Full Squad <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-section">
+  <p class="quote-text">We don't just <em>play cricket.</em><br>We set it on <em>fire.</em></p>
+  <p class="quote-author">Sunrisers Hyderabad &mdash; IPL 2024 Record Holders</p>
+</div>
+
+<!-- NEWS -->
+<section class="news-section" id="news">
+  <div class="section-label">Latest Updates</div>
+  <h2 class="section-title">News &amp;<br>Highlights</h2>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="news-thumb">
+        <div class="news-thumb-text">SRH</div>
+        <div class="news-tag">Match Report</div>
+      </div>
+      <div class="news-body">
+        <div class="news-date">May 27, 2026</div>
+        <div class="news-headline">SRH Fall Short in Thriller as KKR Clinch Late Victory</div>
+        <div class="news-excerpt">Despite a blazing 243/8 on the board, Hyderabad's bowling couldn't hold back a determined KKR who chased down the target with two balls to spare.</div>
+      </div>
+      <div class="news-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    </div>
+    <div class="news-card">
+      <div class="news-thumb" style="height:180px">
+        <div class="news-thumb-text" style="font-size:50px">HEAD</div>
+        <div class="news-tag">Player Focus</div>
+      </div>
+      <div class="news-body">
+        <div class="news-date">May 24, 2026</div>
+        <div class="news-headline">Travis Head Eyes Record Strike Rate Milestone</div>
+        <div class="news-excerpt">The Australian opener is on course to become the first batter to maintain a 170+ strike rate across a full IPL campaign.</div>
+      </div>
+      <div class="news-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    </div>
+    <div class="news-card">
+      <div class="news-thumb" style="height:180px">
+        <div class="news-thumb-text" style="font-size:50px">FIRE</div>
+        <div class="news-tag">Team News</div>
+      </div>
+      <div class="news-body">
+        <div class="news-date">May 22, 2026</div>
+        <div class="news-headline">Vettori Confident Ahead of RCB Clash at Home</div>
+        <div class="news-excerpt">Head Coach Daniel Vettori says the team is hungry for a home win as they face Royal Challengers Bengaluru on June 6.</div>
+      </div>
+      <div class="news-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    </div>
+  </div>
+  <a class="view-all" href="#">All News <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</section>
+
+<!-- SPONSORS -->
+<div class="sponsors-section">
+  <div class="sponsors-label">Official Partners &amp; Sponsors</div>
+  <div class="sponsors-row">
+    <div class="sponsor-item">SUN GROUP</div>
+    <div class="sponsor-item">DREAM11</div>
+    <div class="sponsor-item">BOLD CARE</div>
+    <div class="sponsor-item">MYNTRA</div>
+    <div class="sponsor-item">PAYTM</div>
+    <div class="sponsor-item">TATA</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">Sun<span>Risers</span><br>Hyderabad</div>
+      <div class="footer-tagline">Feel the Heat &bull; Fear the Fire</div>
+      <div class="footer-socials">
+        <div class="social-btn">TW</div>
+        <div class="social-btn">IG</div>
+        <div class="social-btn">FB</div>
+        <div class="social-btn">YT</div>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Club</div>
+      <ul class="footer-links">
+        <li><a href="#">About SRH</a></li>
+        <li><a href="#">History</a></li>
+        <li><a href="#">Management</a></li>
+        <li><a href="#">Coaching Staff</a></li>
+        <li><a href="#">Rajiv Gandhi Stadium</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Cricket</div>
+      <ul class="footer-links">
+        <li><a href="#">Squad 2026</a></li>
+        <li><a href="#">Fixtures</a></li>
+        <li><a href="#">Results</a></li>
+        <li><a href="#">Points Table</a></li>
+        <li><a href="#">Statistics</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Fan Zone</div>
+      <ul class="footer-links">
+        <li><a href="#">Official Merchandise</a></li>
+        <li><a href="#">Tickets</a></li>
+        <li><a href="#">Membership</a></li>
+        <li><a href="#">Fantasy Cricket</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">&copy; 2026 SunRisers Hyderabad. All rights reserved. A Sun TV Network franchise.</div>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Animated fire lines in hero
+  const container = document.getElementById('fireLines');
+  for (let i = 0; i < 20; i++) {
+    const line = document.createElement('div');
+    line.className = 'fire-line';
+    line.style.left = Math.random() * 100 + '%';
+    line.style.animationDelay = Math.random() * 5 + 's';
+    line.style.animationDuration = (2 + Math.random() * 4) + 's';
+    line.style.opacity = 0.3 + Math.random() * 0.5;
+    container.appendChild(line);
+  }
+
+  // Nav darkens on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 80) {
+      nav.style.background = 'rgba(10,10,10,0.98)';
+      nav.style.borderBottomColor = 'rgba(240,90,0,0.35)';
+    } else {
+      nav.style.background = 'rgba(10,10,10,0.92)';
+      nav.style.borderBottomColor = 'rgba(240,90,0,0.2)';
+    }
+  });
+
+  // Squad filter buttons
+  function filterSquad(btn, role) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.player-card').forEach(card => {
+      card.style.display = (role === 'all' || card.dataset.role === role) ? 'flex' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
